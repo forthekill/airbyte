@@ -15,4 +15,4 @@ WITH cte AS (SELECT "id" AS id,
             line_item:base_price_money.amount::NUMBER / 100 as amount,
             line_item:name::STRING as item_name,
             line_item:quantity::INTEGER as quantity
-    FROM cte;
+    FROM cte
