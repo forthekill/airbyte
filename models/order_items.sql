@@ -2,13 +2,13 @@
     schema='dbt_refined'
 ) }}
 
-WITH cte AS (SELECT "id" AS id,
-                "tenders" AS tenders,
-                GET("tenders", 0):type::STRING AS payment_type,
-                "created_at"::DATETIME AS order_date,
+WITH cte AS (SELECT id,
+                tenders,
+                GET(tenders, 0):type::STRING AS payment_type,
+                created_at::DATETIME AS order_date,
                 parse_json(flat_items.value::STRING) AS line_item
-             FROM square.airbyte."orders",
-                LATERAL FLATTEN(input => square.airbyte."orders"."line_items") AS flat_items)
+             FROM SQUARE.AIRBYTE.ORDERS,
+                LATERAL FLATTEN(input => SQUARE.AIRBYTE.ORDERS.line_items) AS flat_items)
     SELECT id,
             CASE WHEN payment_type = 'CARD' THEN 
                 GET(tenders, 0):card_details.card.card_brand::STRING
