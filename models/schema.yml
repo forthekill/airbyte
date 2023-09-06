@@ -4,4 +4,4 @@ sources:
   - name: order_items
     schema: airbyte
     tables:
-      - name: orders
+      - name: orders_refined
