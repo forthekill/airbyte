@@ -33,5 +33,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   order_items:
-    +schema: refined
+    schema: dbt_refined
     +materialized: table

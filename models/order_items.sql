@@ -1,3 +1,7 @@
+{{ config(
+    schema='dbt_refined'
+) }}
+
 WITH cte AS (SELECT "id" AS id,
                 "tenders" AS tenders,
                 GET("tenders", 0):type::STRING AS payment_type,
