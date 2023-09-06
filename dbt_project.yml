@@ -35,3 +35,4 @@ models:
   order_items:
     schema: dbt_refined
     +materialized: table
+    +copy_grants: true
