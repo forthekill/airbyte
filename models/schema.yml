@@ -2,6 +2,6 @@ version: 2
 
 sources:
   - name: order_items
-    schema: airbyte
+    schema: dbt_refined
     tables:
       - name: orders_refined
