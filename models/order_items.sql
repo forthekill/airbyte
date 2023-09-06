@@ -1,6 +1,9 @@
-{{ config(
-    schema='dbt_refined'
-) }}
+{{ 
+    config(
+        schema='dbt_refined',
+        post_hook=["ALTER TABLE {{ this }} SET CHANGE_TRACKING=TRUE"]
+    ) 
+}}
 
 WITH cte AS (SELECT id,
                 tenders,
