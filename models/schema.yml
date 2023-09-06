@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: order_items
+    schema: airbyte
+    tables:
+      - name: orders
