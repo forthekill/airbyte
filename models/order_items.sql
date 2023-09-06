@@ -20,3 +20,4 @@ WITH cte AS (SELECT id,
             line_item:name::STRING as item_name,
             line_item:quantity::INTEGER as quantity
     FROM cte
+    
