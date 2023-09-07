@@ -12,7 +12,7 @@ WITH cte AS (SELECT id,
                 parse_json(flat_items.value::STRING) AS line_item
              FROM SQUARE.AIRBYTE.ORDERS_RAW,
                 LATERAL FLATTEN(input => SQUARE.AIRBYTE.ORDERS_RAW.line_items) AS flat_items)
-    SELECT id,
+    SELECT id AS order_id,
             payment_type,
             CASE WHEN payment_type = 'CARD' THEN 
                 GET(tenders, 0):card_details.card.card_brand::STRING
