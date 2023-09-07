@@ -10,8 +10,8 @@ WITH cte AS (SELECT id,
                 GET(tenders, 0):type::STRING AS payment_type,
                 created_at::DATETIME AS order_date,
                 parse_json(flat_items.value::STRING) AS line_item
-             FROM SQUARE.AIRBYTE.ORDERS,
-                LATERAL FLATTEN(input => SQUARE.AIRBYTE.ORDERS.line_items) AS flat_items)
+             FROM SQUARE.AIRBYTE.ORDERS_RAW,
+                LATERAL FLATTEN(input => SQUARE.AIRBYTE.ORDERS_RAW.line_items) AS flat_items)
     SELECT id,
             payment_type,
             CASE WHEN payment_type = 'CARD' THEN 
